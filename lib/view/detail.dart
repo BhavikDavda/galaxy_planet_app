@@ -46,7 +46,15 @@ class _DetailState extends State<Detail> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.network(args['image']),
+            TweenAnimationBuilder(
+              tween: Tween<double>(begin: 0.0, end: 3.0),
+              duration: Duration(seconds: 60),
+              builder: (context,val,child){
+                return Transform.rotate(angle: val*6.3,
+                  child:Image.network(args['image']),
+                );
+              },
+            ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: ClipRRect(
